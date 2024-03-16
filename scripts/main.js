@@ -48,7 +48,7 @@ function newTask() {
     if (inputValue.length < 1) { // Checks if input is less than 1 character in length, not allowed if true.
         text = "Liian lyhyt";
         input.style.backgroundColor = "lightsalmon";
-        input.style.outline = "thick solid #0000FF";
+        input.style.outline = "thick solid red";
     } else if (inputValue.length > 50) { // Checks if input is more than 50 characters in length, not allowed if true.
         text = "Liian pitkä";
     } else { // Adds acceptable task to list.
@@ -149,5 +149,6 @@ if (myTasks != null) { // Checks if data exists in local storage, i.e. key is no
 
 function clearStorage() { // Clears local storage when button is pressed.
     localStorage.clear();
+    location.reload();
     console.log("Cleared local storage!")
 }
