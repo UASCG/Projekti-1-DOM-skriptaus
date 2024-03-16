@@ -12,11 +12,14 @@
     <div id="headerDiv" class="header">
         <h1>Tehtäväluettelo</h1>
         <input type="text" id="taskInput" placeholder="Tehtävä...">
-        <button type="button" onclick="newTask()" class="addBtn">Lisää</button>
-        <!-- Displays error messages -->
-        <p id="addTaskMessage">Kirjoita tehtävä ylläolevaan kenttään ja paina "Lisää".</p>
-        <!-- Deletes all stored data from localStorage -->
+        <!-- Deletes all stored data from localStorage. -->
         <button type="button" onclick="clearStorage()" class="addBtn">Poista kaikki tallennetut tehtävät</button>
+        <!-- Adds task to list below. -->
+        <button type="button" onclick="newTask()" class="addBtn">Lisää</button>
+        <!-- Displays error messages. -->
+        <p id="addTaskMessage">Kirjoita tehtävä ylläolevaan kenttään ja paina "Lisää".</p>
+
+
     </div>
 
     <ul id="taskList">
