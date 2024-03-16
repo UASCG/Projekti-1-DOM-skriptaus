@@ -24,7 +24,7 @@ for (i = 0; i < close.length; i++) {
         var div = this.parentElement;
         const index = taskArray.indexOf([i]);
         if (index > -1) { // only splice array when item is found
-          taskArray.splice(index, 1); // 2nd parameter means remove one item only
+            taskArray.splice(index, 1); // 2nd parameter means remove one item only
         }
         div.remove();
         localStorage.setItem("myTasks", JSON.stringify(taskArray)); // Stringifies and saves updated tasks into local storage under key "myTasks".
@@ -41,9 +41,14 @@ ulList.addEventListener("click", function (event) { // Listens for click events.
 // Creates a new task item in the list when clicking "Lisää".
 function newTask() {
     let text; // Used for handling messages to user.
+    var input = document.getElementById("taskInput");
     var inputValue = document.getElementById("taskInput").value; // Takes user's input value, i.e. task.
+    input.style.backgroundColor = "white";
+    input.style.outline = "none";
     if (inputValue.length < 1) { // Checks if input is less than 1 character in length, not allowed if true.
         text = "Liian lyhyt";
+        input.style.backgroundColor = "lightsalmon";
+        input.style.outline = "thick solid #0000FF";
     } else if (inputValue.length > 50) { // Checks if input is more than 50 characters in length, not allowed if true.
         text = "Liian pitkä";
     } else { // Adds acceptable task to list.
@@ -69,7 +74,7 @@ function newTask() {
                 var div = this.parentElement;
                 const index = taskArray.indexOf([i]);
                 if (index > -1) { // only splice array when item is found
-                  taskArray.splice(index, 1); // 2nd parameter means remove one item only
+                    taskArray.splice(index, 1); // 2nd parameter means remove one item only
                 }
                 div.remove();
                 localStorage.setItem("myTasks", JSON.stringify(taskArray)); // Stringifies and saves updated tasks into local storage under key "myTasks".
@@ -122,23 +127,27 @@ if (myTasks != null) { // Checks if data exists in local storage, i.e. key is no
         li.appendChild(span);
 
         // Clicking on the "delete" button deletes the list item.
-        var i2;
-        for (i2 = 0; i2 < close.length; i2++) {
-            close[i2].onclick = function () {
-                console.log(i2 + " i2 log1");
-                console.log(taskArray.indexOf(i2) + " i2 log2");
-                console.log(myTasks.indexOf(i2) + " i2 log3");
-                var div = this.parentElement;
-                const index = taskArray.indexOf([i2]);
-                if (index > -1) { // only splice array when item is found
-                  taskArray.splice(index, 1); // 2nd parameter means remove one item only
-                }
-                div.remove();
-                localStorage.setItem("myTasks", JSON.stringify(taskArray)); // Stringifies and saves updated tasks into local storage under key "myTasks".
-            }
+        var close = document.getElementsByClassName("close");
+        console.log(i);
+        console.log(myTasks[i]);
+        close[i].onclick = function () {
+            deleteIndex = myTasks.indexOf(myTasks[i]) - 1;
+            console.log("myTasks.indexOf(myTasks[i]) = " + myTasks.indexOf(myTasks[i]))
+            console.log("deleteIndex = " + deleteIndex)
+            console.log(i);
+            var div = this.parentElement;
+            div.remove();
+            taskArray.splice(taskArray[deleteIndex], 1);
+            console.log("Deleting " + taskArray[deleteIndex]);
+            console.log(taskArray);
+            localStorage.setItem("myTasks", JSON.stringify(taskArray)); // Stringifies and saves updated tasks into local storage under key "myTasks".
         }
     }
 } else {
     console.log("No saved tasks found.")
 }
 
+function clearStorage() { // Clears local storage when button is pressed.
+    localStorage.clear();
+    console.log("Cleared local storage!")
+}

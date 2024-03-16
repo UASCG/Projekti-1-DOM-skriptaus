@@ -12,8 +12,9 @@
     <div id="headerDiv" class="header">
         <h1>Tehtäväluettelo</h1>
         <input type="text" id="taskInput" placeholder="Tehtävä...">
-        <button type="button" onclick="newTask()" class="addButton">Lisää</button>
+        <button type="button" onclick="newTask()">Lisää</button>
         <p id="addTaskMessage">Kirjoita tehtävä ylläolevaan kenttään ja paina "Lisää".</p> <!-- Displays error messages -->
+        <button type="button" onclick="clearStorage()">Poista kaikki tallennetut tehtävät</button>
     </div>
 
     <ul id="taskList">
