@@ -3,6 +3,7 @@ var liAll = document.getElementsByTagName("LI");
 var ulList = document.querySelector("UL");
 const taskArray = [];
 let text; // Used for handling messages to user.
+let loadingText; // Used for letting user know if data was loaded from localStorage.
 var input = document.getElementById("taskInput");
 
 // Load tasks from localStorage.
@@ -14,6 +15,7 @@ function loadTasks() {
 
     if (myTasks != null) { // Checks if data exists in local storage, i.e. key is not null.
         console.log("Found " + myTasks.length + " saved tasks.")
+        loadingText = "Tallennettuja tehtäviä löytyi " + myTasks.length + " kappaletta.";
         for (let i = 0; i < myTasks.length; i++) {
             console.log("myTasks: " + myTasks[i]);
 
@@ -24,8 +26,10 @@ function loadTasks() {
             deleteTask(myTasks[i]);
         }
     } else {
+        loadingText = "Tallennettuja tehtäviä ei löytynyt.";
         console.log("No saved tasks found.")
     }
+    document.getElementById("loadTaskMessage").innerHTML = loadingText;
 }
 
 function newTaskInput(inputValue) { // Used for checking user inputs for illegal ;-characters before adding tasks.
@@ -49,11 +53,13 @@ function newTask(inputValue) {
     input.style.backgroundColor = "white";
     input.style.outline = "none";
     if (inputValue.length < 1) { // Checks if input is less than 1 character in length, not allowed if true.
-        text = "Liian lyhyt";
+        text = "Liian lyhyt! Sallittu minimipituus: 1. Merkkijonosi: " + inputValue.length;
         input.style.backgroundColor = "lightsalmon";
         input.style.outline = "thick solid red";
-    } else if (inputValue.length > 50) { // Checks if input is more than 50 characters in length, not allowed if true.
-        text = "Liian pitkä";
+    } else if (inputValue.length > 100) { // Checks if input is more than 50 characters in length, not allowed if true.
+        text = "Liian pitkä! Sallittu maksimipituus: 100. Merkkijonosi: " + inputValue.length;
+        input.style.backgroundColor = "lightsalmon";
+        input.style.outline = "thick solid red";
     } else { // Adds acceptable task to list.
         var li = document.createElement("li");
 
