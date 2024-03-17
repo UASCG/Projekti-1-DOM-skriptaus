@@ -12,32 +12,21 @@
     <div id="headerDiv" class="header">
         <h1>Tehtäväluettelo</h1>
         <hr>
-        <button type="button" onclick="newTaskInput(taskInput.value)" class="addBtn">Lisää</button>
-
-        <input type="text" id="taskInput" placeholder="Lisää tehtävä...">
-
-        <button type="button" onclick="clearStorage()" class="delBtn">Poista kaikki tehtävät</button>
+        <button type="button" onclick="newTaskInput(taskInput.value)" class="addBtn">Lisää</button> 
+        <input type="text" id="taskInput" placeholder="Lisää tehtävä..."> <!-- Adds task to list below. -->
+        <button type="button" onclick="clearStorage()" class="delBtn">Poista kaikki tehtävät</button> <!-- Deletes all stored data from localStorage. -->
         <hr>
-        <!-- Deletes all stored data from localStorage. -->
-
-        <!-- Adds task to list below. -->
-
-        <!-- Displays error messages. -->
-
     </div>
     <div>
         <hr>
         <p>Kirjoita tehtävä ylläolevaan kenttään ja paina "Lisää". Merkkijono saa olla korkeintaan 100 merkkiä. Älä käytä puolipistettä (;).</p>
-        <p id="loadTaskMessage"></p>
-        <p id="addTaskMessage"></p>
+        <p id="loadTaskMessage"></p> <!-- Displays loading messages. -->
+        <p id="addTaskMessage"></p> <!-- Displays error messages. -->
         <hr>
     </div>
-
     <ul id="taskList">
     </ul>
-
     <script src="scripts/main.js"></script>
-
 </body>
 
 </html>
