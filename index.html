@@ -15,9 +15,10 @@
         <!-- Deletes all stored data from localStorage. -->
         <button type="button" onclick="clearStorage()" class="addBtn">Poista kaikki tallennetut tehtävät</button>
         <!-- Adds task to list below. -->
-        <button type="button" onclick="newTask()" class="addBtn">Lisää</button>
+        <button type="button" onclick="newTaskInput(taskInput.value)" class="addBtn">Lisää</button>
         <!-- Displays error messages. -->
-        <p id="addTaskMessage">Kirjoita tehtävä ylläolevaan kenttään ja paina "Lisää".</p>
+        <p id="addTaskMessage"></p>
+        <p>Kirjoita tehtävä ylläolevaan kenttään ja paina "Lisää". Älä käytä ;-merkkiä.</p>
     </div>
 
     <ul id="taskList">
