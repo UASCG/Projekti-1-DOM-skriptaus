@@ -17,7 +17,7 @@ function loadTasks() {
         console.log("Found " + myTasks.length + " saved tasks.")
         loadingText = "Tallennettuja tehtäviä löytyi " + myTasks.length + " kappaletta.";
         for (let i = 0; i < myTasks.length; i++) {
-            console.log("myTasks: " + myTasks[i]);
+            //console.log("myTasks: " + myTasks[i]);
 
             // Creates new task from localStorage.
             newTask(myTasks[i]);
@@ -47,8 +47,8 @@ function newTaskInput(inputValue) { // Used for checking user inputs for illegal
 function newTask(inputValue) {
     savedClassName = inputValue.split(";")[1];
     inputValue = inputValue.split(";")[0];
-    console.log("inputValue after split: " + inputValue)
-    console.log("savedClassName after split: " + savedClassName)
+    //console.log("inputValue after split: " + inputValue)
+    //console.log("savedClassName after split: " + savedClassName)
 
     input.style.backgroundColor = "white";
     input.style.outline = "none";
@@ -76,7 +76,7 @@ function newTask(inputValue) {
         deleteTask(inputValue);
 
         taskArray.push(inputValue + ";" + li.className); // Adds task to task array.
-        console.log("Updated taskArray: " + taskArray);
+        //console.log("Updated taskArray: " + taskArray);
 
         localStorage.setItem("myTasks", JSON.stringify(taskArray)); // Stringifies and saves created tasks into local storage under key "myTasks".
 
@@ -107,7 +107,7 @@ function deleteTask() {
             itemToDelete = itemToDelete.replace(/\u00D7/gi, '') // Finds all x signs (xSign) in string and deletes them using regex.
             itemToDelete = itemToDelete.concat(";" + itemClassName); // Adds task's classname so that the combination can be found from the array.
             index = taskArray.indexOf(itemToDelete);
-            console.log("Item to be deleted (index): " + itemToDelete + "(" + index + ")");
+            //console.log("Item to be deleted (index): " + itemToDelete + "(" + index + ")");
             if (index > -1) { // only splice array when item is found
                 taskArray.splice(index, 1); // 2nd parameter means remove one item only
             }
@@ -125,9 +125,9 @@ ulList.addEventListener("click", function (event) { // Listens for click events.
         var itemToCheck = event.target.textContent; // Finds the actual text of the task in the target element's text content.
         var itemClassName = event.target.className; // Finds task's classname.
         itemToCheck = itemToCheck.replace(/\u00D7/gi, '') // Finds all x signs (xSign) in string and deletes them using regex.
-        console.log("itemToCheck + itemClassName: " + itemToCheck + itemClassName);
+        //console.log("itemToCheck + itemClassName: " + itemToCheck + itemClassName);
         index = taskArray.indexOf(itemToCheck + ";" + itemClassName);
-        console.log("Item to be checked (index): " + itemToCheck.split(";")[0] + "(" + index + ")");
+        //console.log("Item to be checked (index): " + itemToCheck.split(";")[0] + "(" + index + ")");
 
         if (index > -1) { // only modify array when item is found
             event.target.classList.toggle('checked'); // Toggles checkmark on <li> item.
@@ -143,5 +143,5 @@ ulList.addEventListener("click", function (event) { // Listens for click events.
 function clearStorage() { // Clears local storage when button is pressed.
     localStorage.clear();
     location.reload();
-    console.log("Cleared local storage!")
+    //console.log("Cleared local storage!")
 }
