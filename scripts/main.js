@@ -56,7 +56,7 @@ function newTask(inputValue) {
         text = "Liian lyhyt! Sallittu minimipituus: 1. Merkkijonosi: " + inputValue.length;
         input.style.backgroundColor = "lightsalmon";
         input.style.outline = "thick solid red";
-    } else if (inputValue.length > 100) { // Checks if input is more than 50 characters in length, not allowed if true.
+    } else if (inputValue.length > 100) { // Checks if input is more than 100 characters in length, not allowed if true.
         text = "Liian pitkä! Sallittu maksimipituus: 100. Merkkijonosi: " + inputValue.length;
         input.style.backgroundColor = "lightsalmon";
         input.style.outline = "thick solid red";
